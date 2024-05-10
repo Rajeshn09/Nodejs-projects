@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #121212;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+    border-bottom: 2px solid #fff;
+  }
+  
+  nav ul li {
+    list-style: none;
+  }
+  nav ul li a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .containerDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  
+  .inputcardsDiv,
+  .resultcardsDiv {
+    position: relative;
+    border: 2px solid #31363f;
+    border-radius: 10px;
+    padding: 1em;
+    width: 40%;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+  }
+  
+  .cardsDiv:hover {
+    border: 2px solid #fff;
+  }
+  
+  input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px dotted white;
+    outline: none;
+    line-height: 2;
+    margin: 1em 0;
+  }
+  
+  textarea {
+    width: 100%;
+    outline: none;
+    border: none;
+    resize: none;
+    line-height: 3;
+    background-image: linear-gradient(to bottom, transparent 90%, #31363f 90%);
+    background-size: 100% 3em;
+    background-repeat: repeat-y;
+    overflow-y: hidden;
+  }
+  
+  .inputcardsDiv button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    padding: 0.5em;
+    margin: 0.5em;
+  }
+  .resultcardsDiv button{
+    border-radius: 10px;
+    padding: 0.5em;
+    margin: 0.5em;
+  }
+  .resultDivButton{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  p {
+    margin: 1em 0;
+  }
+  button:hover {
+    border: 2px solid #fff;
+  }
+  .notes{
+    text-align: center;
+  }
+  
+  /* My Notes */
+  .myNotes {
+    margin: 1em;
+    padding: 1em;
+    border-top: 2px solid white;
+    display: flex;
+    flex-direction: column;
+  }
+  #saveButton{
+    display: none;
+  }
+  .dateDisplay{
+    width: 150px;
+    border-bottom: 2px solid rgb(22, 243, 22);
+  }

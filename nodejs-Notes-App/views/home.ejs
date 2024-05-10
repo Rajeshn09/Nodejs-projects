@@ -1,0 +1,126 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/home.css" />
+  <title>Notes-App</title>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li>
+        <a href="/" >Home</a>
+      </li>
+    </ul>
+    <ul>
+      <li>TAKE NOTES</li>
+    </ul>
+    <ul>
+      <li>
+        <a href="/logout" onclick="addCard()">Logout</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="containerDiv" id="containerDiv">
+    <div class="inputcardsDiv">
+      <form action="" method="post">
+        <div>
+          <input type="text" name="title" placeholder="Title" />
+          <textarea name="description" placeholder="Take Notes..." name="" id="inputArea" oninput="inputTextArea()"></textarea>
+          <input class="dateDisplay" type="text" name="date" id="" placeholder="dd/mm/yyyy">
+        </div>
+        <div>
+          <button type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <h1 class="notes">My Notes</h1>
+  <div class="myNotes">
+    <div class="containerDiv" id="containerDiv">
+      <% for (let task of tasks) { %>
+      <div class="resultcardsDiv">
+        <form action="/save/<%= task.task_id %>" method="post">
+          <div>
+            <input type="text" id="resultDisplayInput" name="title" placeholder="Title" value="<%= task.title %>" disabled />
+            <textarea disabled name="description" id="resultDisplayTextarea" oninput="displayTextArea()"><%= task.description %></textarea>
+            <input id="dateDisplay" type="text" name="date" value="<%= task.date_to_complete %>" disabled/>
+          </div>
+          <div class="resultDivButton">
+            <button class="editButton" onclick="handleEditButtonClick(event)">Edit</button>
+            <button class="deleteButton" formaction="/delete/<%= task.task_id %>">Delete</button>
+            <button class="saveButton">Save</button>
+          </div>
+        </form>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</body>
+<script>
+  function inputTextArea() {
+    const textArea = document.getElementById("inputArea");
+    textArea.style.height = "auto";
+    textArea.style.height = textArea.scrollHeight + "px";
+  }
+  
+  const editButtons = document.querySelectorAll('.editButton');
+  
+  function handleEditButtonClick(event) {
+    event.preventDefault();
+    enableEdit();
+  }
+  
+  editButtons.forEach((button) => {
+    button.addEventListener('click', handleEditButtonClick);
+  });
+  
+  function displayTextArea() {
+    const textArea = document.getElementById("resultDisplayTextarea");
+    textArea.style.height = "auto";
+    textArea.style.height = textArea.scrollHeight + "px";
+  }
+  
+
+  
+  function enableEdit() {
+    const resultDisplayInputs = document.querySelectorAll("#resultDisplayInput");
+    const dateDisplays = document.querySelectorAll("#dateDisplay");
+    const resultDisplayTextareas = document.querySelectorAll("#resultDisplayTextarea");
+    const saveButtons = document.querySelectorAll("#saveButton");
+    
+    resultDisplayInputs.forEach((input) => {
+      input.disabled = false;
+    });
+    
+    dateDisplays.forEach((date) => {
+      date.disabled = false;
+    });
+    
+    resultDisplayTextareas.forEach((textarea) => {
+      textarea.disabled = false;
+    });
+    
+    saveButtons.forEach((button) => {
+      button.style.display = "inline-block";
+    });
+  }
+  
+  const deleteButtons = document.querySelectorAll('.deleteButton');
+  
+  deleteButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const task_id = event.target.dataset.taskId;
+      fetch(`/delete/${task_id}`, {
+        method: 'POST'
+      })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+    });
+  });
+</script>
+</html>

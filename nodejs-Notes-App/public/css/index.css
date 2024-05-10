@@ -1,0 +1,99 @@
+
+    body  {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #26282a;
+    }
+    .text{
+        padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      flex-grow: 1; 
+      border: 5px solid greenyellow;
+    }
+    h1 {
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: #337ab7;
+    }
+    a:hover {
+      color: #23527c;
+    }
+    .navbar {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+    .notes{
+        text-align: center;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .footer {
+      background-color: #f9f9f9;
+      padding: 10px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+    }
+   
+    body {
+      background-image: linear-gradient(to bottom, #f9f9f9, #fff);
+      background-size: 100% 300px;
+      background-position: 0% 100%;
+    }
+
+    .video-box {
+      position: relative;
+      width: 80%;
+      height: 400px;
+      margin: 40px auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .video-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    
+    .video-box .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1;
+    }
+    
+    .video-box .play-button:before {
+      content: "\25B6"; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 24px;
+      color: #fff;
+    }
+    
